@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fan Family</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F3EC;
+    --ink:#1B2A2E;
+    --navy:#132B3A;
+    --line:#D8D1C0;
+    --gold:#B78A2E;
+    --green:#3E6E5A;
+    --muted:#6E6555;
+    --card:#FFFDF8;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:980px;margin:0 auto;padding:48px 28px 90px;}
+
+  .ledger-strip{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    border-bottom:2px solid var(--navy);padding-bottom:18px;margin-bottom:6px;
+    font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;
+    text-transform:uppercase;color:var(--muted);
+  }
+  .ledger-strip span{color:var(--navy);font-weight:600;}
+
+  header.hero{
+    padding:40px 0 44px;border-bottom:1px solid var(--line);margin-bottom:44px;
+  }
+  h1{
+    font-family:'Fraunces',serif;font-weight:600;font-size:46px;line-height:1.05;
+    margin:0 0 14px;letter-spacing:-0.01em;
+  }
+  h1 em{font-style:italic;font-weight:400;color:var(--gold);}
+  .sub{color:var(--muted);font-size:15.5px;max-width:56ch;line-height:1.6;}
+
+  .section{margin:52px 0;}
+  .section-head{display:flex;align-items:baseline;gap:14px;margin-bottom:20px;}
+  .section-num{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gold);font-weight:700;}
+  .section-head h2{font-family:'Fraunces',serif;font-size:23px;font-weight:600;margin:0;}
+  .section-head .desc{margin-left:auto;font-size:12.5px;color:var(--muted);text-align:right;max-width:34ch;}
+
+  .card-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+  .card{
+    background:var(--card);border:1px solid var(--line);padding:26px 24px;
+    display:flex;flex-direction:column;gap:10px;text-decoration:none;color:inherit;
+    transition:border-color .15s ease, transform .15s ease;
+  }
+  a.card:hover{border-color:var(--navy);transform:translateY(-2px);}
+  .card .eyebrow{
+    font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;
+    text-transform:uppercase;color:var(--muted);
+  }
+  .card h3{font-family:'Fraunces',serif;font-size:22px;font-weight:600;margin:0;}
+  .card p{margin:0;font-size:13px;color:var(--muted);line-height:1.55;}
+  .card .go{
+    margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:11.5px;
+    font-weight:600;color:var(--navy);display:flex;align-items:center;gap:6px;
+  }
+  .card .go .arrow{transition:transform .15s ease;}
+  a.card:hover .go .arrow{transform:translateX(3px);}
+
+  .card.placeholder{
+    border-style:dashed;color:var(--muted);cursor:default;
+  }
+  .card.placeholder h3{color:var(--muted);}
+  .card.placeholder:hover{transform:none;border-color:var(--line);}
+  .badge-soon{
+    display:inline-block;padding:2px 8px;border-radius:20px;font-size:9.5px;
+    font-weight:600;font-family:'JetBrains Mono',monospace;
+    background:#EFE9DA;color:var(--muted);width:fit-content;
+  }
+
+  footer{
+    margin-top:70px;border-top:2px solid var(--navy);padding-top:18px;
+    font-size:11px;color:var(--muted);line-height:1.7;
+  }
+
+  @media (max-width:640px){
+    .card-grid{grid-template-columns:1fr;}
+    h1{font-size:34px;}
+    .section-head{flex-direction:column;align-items:flex-start;}
+    .section-head .desc{margin-left:0;text-align:left;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="ledger-strip">
+    <div>Family Hub <span>&middot; Private Home Page</span></div>
+    <div>Last updated <span>9 Aug 2026</span></div>
+  </div>
+
+  <header class="hero">
+    <h1>The <em>Fan</em> Family</h1>
+    <p class="sub">One place for the things we track together — starting with the kids' long-term ETF investing accounts, with more sections to come.</p>
+  </header>
+
+  <div class="section">
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <h2>Investing</h2>
+      <span class="desc">$300/month &middot; 30-year ASX ETF plan &middot; 15% target return</span>
+    </div>
+    <div class="card-grid">
+      <a class="card" href="./austin-report.html">
+        <span class="eyebrow">Investment Ledger</span>
+        <h3>Austin</h3>
+        <p>30-year ETF plan tracking, current holdings, monthly performance and trailing returns.</p>
+        <span class="go">View report <span class="arrow">&rarr;</span></span>
+      </a>
+      <a class="card" href="./elissa-report.html">
+        <span class="eyebrow">Investment Ledger</span>
+        <h3>Elissa</h3>
+        <p>30-year ETF plan tracking, current holdings, monthly performance and trailing returns.</p>
+        <span class="go">View report <span class="arrow">&rarr;</span></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <h2>More, soon</h2>
+      <span class="desc">This hub is built to grow beyond investing</span>
+    </div>
+    <div class="card-grid">
+      <div class="card placeholder">
+        <span class="badge-soon">Coming soon</span>
+        <h3>Family Calendar</h3>
+        <p>Shared dates, school terms, birthdays and trips.</p>
+      </div>
+      <div class="card placeholder">
+        <span class="badge-soon">Coming soon</span>
+        <h3>Photos</h3>
+        <p>A running album for the family.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    This page links out to per-account investment reports generated from Betashares transaction exports. It is intended for family use — treat the link as private, and avoid sharing it publicly since the linked reports include account balances.
+  </footer>
+
+</div>
+</body>
+</html>
