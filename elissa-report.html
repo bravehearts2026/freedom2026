@@ -191,7 +191,7 @@
     <div class="section-head">
       <span class="section-num">01</span>
       <h2>Account Snapshot</h2>
-      <span class="desc">Position as of 9 Aug 2026</span>
+      <span class="desc">Position as of 10 Aug 2026</span>
     </div>
     <div class="stat-row">
       <div class="stat">
@@ -201,13 +201,13 @@
       </div>
       <div class="stat">
         <div class="label">Account Value</div>
-        <div class="num">$3,106.05</div>
-        <div class="foot">$3,106.05 invested + $0.00 cash</div>
+        <div class="num">$3,203.56</div>
+        <div class="foot">$3,203.56 invested + $0.00 cash</div>
       </div>
       <div class="stat">
         <div class="label">Total Gain / Loss</div>
-        <div class="num pos">+$106.05</div>
-        <div class="foot">+3.54% since inception</div>
+        <div class="num pos">+$203.56</div>
+        <div class="foot">+6.79% since inception</div>
       </div>
       <div class="stat">
         <div class="label">30-Year Plan Target</div>
@@ -226,7 +226,7 @@
     </div>
     <div class="chart-card">
       <h3>Projected balance growth</h3>
-      <p class="note">Compounding curve for a disciplined $300/month contribution at a 15% annual return. Current actual position (4 months in) marked for reference — actual contributions have run well ahead of the $300/month pace, while returns have started slightly negative.</p>
+      <p class="note">Compounding curve for a disciplined $300/month contribution at a 15% annual return. Current actual position (4 months in) marked for reference — actual contributions have run well ahead of the $300/month pace, and returns are currently running ahead of plan too.</p>
       <div class="chart-holder"><canvas id="goalChart"></canvas></div>
     </div>
     <div class="stat-row" style="margin-top:20px;">
@@ -277,7 +277,7 @@
     <div class="section-head">
       <span class="section-num">04</span>
       <h2>Current Holdings</h2>
-      <span class="desc">Valued at live prices from your Betashares app, 9 Aug 2026</span>
+      <span class="desc">Valued at live closing prices, 10 Aug 2026</span>
     </div>
     <div class="table-card">
       <table>
@@ -310,10 +310,10 @@
         <thead><tr><th>Period</th><th>Return</th><th style="text-align:left;padding-left:20px;">Note</th></tr></thead>
         <tbody>
           <tr><td>1 Month</td><td><span class="badge neg">&minus;0.44%</span></td><td style="text-align:left;padding-left:20px;font-family:'Inter',sans-serif;color:var(--muted);">30 Jun &rarr; 31 Jul 2026</td></tr>
-          <tr><td>3 Month</td><td><span class="badge pos">+5.97%</span></td><td style="text-align:left;padding-left:20px;font-family:'Inter',sans-serif;color:var(--muted);">30 Apr &rarr; 9 Aug 2026</td></tr>
+          <tr><td>3 Month</td><td><span class="badge pos">+10.99%</span></td><td style="text-align:left;padding-left:20px;font-family:'Inter',sans-serif;color:var(--muted);">30 Apr &rarr; 10 Aug 2026</td></tr>
           <tr><td>6 Month</td><td class="na">N/A</td><td style="text-align:left;padding-left:20px;font-family:'Inter',sans-serif;color:var(--muted);">Account opened Apr 2026 — under 6 months old</td></tr>
           <tr><td>1 Year</td><td class="na">N/A</td><td style="text-align:left;padding-left:20px;font-family:'Inter',sans-serif;color:var(--muted);">Account opened Apr 2026 — under 12 months old</td></tr>
-          <tr><td>Since Inception</td><td><span class="badge pos">+3.54%</span></td><td style="text-align:left;padding-left:20px;font-family:'Inter',sans-serif;color:var(--muted);">25 Apr 2026 &rarr; 9 Aug 2026 (3.5 months)</td></tr>
+          <tr><td>Since Inception</td><td><span class="badge pos">+6.79%</span></td><td style="text-align:left;padding-left:20px;font-family:'Inter',sans-serif;color:var(--muted);">25 Apr 2026 &rarr; 10 Aug 2026 (3.5 months)</td></tr>
         </tbody>
       </table>
     </div>
@@ -326,7 +326,7 @@
 </div>
 
 <script>
-document.getElementById('genDate').textContent = new Date('2026-08-09T00:00:00').toLocaleDateString('en-AU',{day:'numeric',month:'short',year:'numeric'});
+document.getElementById('genDate').textContent = new Date('2026-08-10T00:00:00').toLocaleDateString('en-AU',{day:'numeric',month:'short',year:'numeric'});
 
 Chart.defaults.font.family = "'Inter', sans-serif";
 Chart.defaults.color = '#6E6555';
@@ -378,8 +378,8 @@ new Chart(document.getElementById('goalChart'), {
 
 // ---- Monthly gain/loss chart ----
 const months = ['Apr 2026','May 2026','Jun 2026','Jul 2026','Aug 2026 (to date)'];
-const netGL = [-9.71, -239.28, 192.13, -12.97, 175.88];
-const balances = [890.29, 1851.01, 2943.14, 2930.17, 3106.05];
+const netGL = [-9.71, -239.28, 192.13, -12.97, 273.39];
+const balances = [890.29, 1851.01, 2943.14, 2930.17, 3203.56];
 
 new Chart(document.getElementById('monthlyChart'), {
   type:'bar',
@@ -414,11 +414,11 @@ months.forEach((m,i)=>{
 
 // ---- Holdings table ----
 const holdings = [
-  {sym:'LNAS:AU', name:'Global X Ultra Long Nasdaq 100 Complex ETF', qty:125.3528, avg:11.9662, last:11.99, mv:1502.98, unreal:2.98, pct:0.20},
-  {sym:'RCKT:AU', name:'Betashares Space Industry ETF', qty:67.6826, avg:9.2968, last:9.85, mv:666.67, unreal:37.44, pct:5.95},
-  {sym:'SEMI:AU', name:'Global X Semiconductor ETF', qty:9.2234, avg:32.45, last:35.79, mv:330.10, unreal:30.80, pct:10.29},
-  {sym:'URNM:AU', name:'Betashares Global Uranium ETF', qty:30.3600, avg:9.8814, last:10.19, mv:309.36, unreal:9.36, pct:3.12},
-  {sym:'NDQ:AU', name:'Betashares NASDAQ 100 ETF', qty:4.8796, avg:61.48, last:60.85, mv:296.92, unreal:-3.08, pct:-1.03},
+  {sym:'LNAS:AU', name:'Global X Ultra Long Nasdaq 100 Complex ETF', qty:125.3528, avg:11.9662, last:12.35, mv:1548.11, unreal:48.11, pct:3.21},
+  {sym:'RCKT:AU', name:'Betashares Space Industry ETF', qty:67.6826, avg:9.2968, last:10.49, mv:709.99, unreal:80.76, pct:12.83},
+  {sym:'SEMI:AU', name:'Global X Semiconductor ETF', qty:9.2234, avg:32.45, last:36.20, mv:333.89, unreal:34.59, pct:11.56},
+  {sym:'URNM:AU', name:'Betashares Global Uranium ETF', qty:30.3600, avg:9.8814, last:10.29, mv:312.40, unreal:12.40, pct:4.13},
+  {sym:'NDQ:AU', name:'Betashares NASDAQ 100 ETF', qty:4.8796, avg:61.48, last:61.31, mv:299.17, unreal:-0.83, pct:-0.28},
 ];
 const hBody = document.getElementById('holdingsTableBody');
 let totMV=0, totCost=0;
