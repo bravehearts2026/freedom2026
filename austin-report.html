@@ -191,7 +191,7 @@
     <div class="section-head">
       <span class="section-num">01</span>
       <h2>Account Snapshot</h2>
-      <span class="desc">Position as of 10 Aug 2026</span>
+      <span class="desc">Position as of 14 Aug 2026</span>
     </div>
     <div class="stat-row">
       <div class="stat">
@@ -201,13 +201,13 @@
       </div>
       <div class="stat">
         <div class="label">Account Value</div>
-        <div class="num">$2,849.11</div>
-        <div class="foot">$2,849.10 invested + $0.01 cash</div>
+        <div class="num">$2,859.01</div>
+        <div class="foot">$883.72 invested + $1,975.29 cash</div>
       </div>
       <div class="stat">
         <div class="label">Total Gain / Loss</div>
-        <div class="num pos">+$149.11</div>
-        <div class="foot">+5.52% since inception</div>
+        <div class="num pos">+$159.01</div>
+        <div class="foot">+5.89% since inception</div>
       </div>
       <div class="stat">
         <div class="label">30-Year Plan Target</div>
@@ -277,7 +277,7 @@
     <div class="section-head">
       <span class="section-num">04</span>
       <h2>Current Holdings</h2>
-      <span class="desc">Valued at live closing prices, 10 Aug 2026</span>
+      <span class="desc">Valued at live closing prices, 14 Aug 2026</span>
     </div>
     <div class="table-card">
       <table>
@@ -294,7 +294,7 @@
           </tr>
         </tfoot>
       </table>
-      <p class="note" style="margin-top:14px;">Cash awaiting investment: $0.01. Realised gains banked from prior trades (SEMI, VHY, net of GGOV/SNAS losses): +$3.25, already reflected in account value above.</p>
+      <p class="note" style="margin-top:14px;">The account exited LNAS, RCKT, SEMI, URNM, NDQ, GGOV and VHY entirely this week and is now concentrated in <strong>SNAS</strong> (Global X Ultra Short Nasdaq 100 Complex ETF) &mdash; an inverse fund that gains when the Nasdaq 100 falls, the opposite behaviour to the long ETFs held previously. Only $883.72 (31%) of the account is currently invested; the remaining <strong>$1,975.29 (69%) is sitting in cash</strong>, uninvested. Realised gains banked from this week's and prior trades: +$175.28, already reflected in cash above.</p>
     </div>
   </div>
 
@@ -310,23 +310,23 @@
         <thead><tr><th>Period</th><th>Return</th><th style="text-align:left;padding-left:20px;">Note</th></tr></thead>
         <tbody>
           <tr><td>1 Month</td><td><span class="badge pos">+0.34%</span></td><td style="text-align:left;padding-left:20px;font-family:'Inter',sans-serif;color:var(--muted);">30 Jun &rarr; 31 Jul 2026</td></tr>
-          <tr><td>3 Month</td><td><span class="badge pos">+9.04%</span></td><td style="text-align:left;padding-left:20px;font-family:'Inter',sans-serif;color:var(--muted);">30 Apr &rarr; 10 Aug 2026</td></tr>
+          <tr><td>3 Month</td><td><span class="badge pos">+9.64%</span></td><td style="text-align:left;padding-left:20px;font-family:'Inter',sans-serif;color:var(--muted);">30 Apr &rarr; 14 Aug 2026</td></tr>
           <tr><td>6 Month</td><td class="na">N/A</td><td style="text-align:left;padding-left:20px;font-family:'Inter',sans-serif;color:var(--muted);">Account opened Apr 2026 — under 6 months old</td></tr>
           <tr><td>1 Year</td><td class="na">N/A</td><td style="text-align:left;padding-left:20px;font-family:'Inter',sans-serif;color:var(--muted);">Account opened Apr 2026 — under 12 months old</td></tr>
-          <tr><td>Since Inception</td><td><span class="badge pos">+5.52%</span></td><td style="text-align:left;padding-left:20px;font-family:'Inter',sans-serif;color:var(--muted);">26 Apr 2026 &rarr; 10 Aug 2026 (3.5 months)</td></tr>
+          <tr><td>Since Inception</td><td><span class="badge pos">+5.89%</span></td><td style="text-align:left;padding-left:20px;font-family:'Inter',sans-serif;color:var(--muted);">26 Apr 2026 &rarr; 14 Aug 2026 (3.6 months)</td></tr>
         </tbody>
       </table>
     </div>
   </div>
 
   <footer>
-    Figures are derived from the uploaded Betashares transaction log (38 transactions, 26 Apr 2026 – 29 Jul 2026) combined with a live portfolio snapshot from the Betashares app on 9 Aug 2026. Cost basis and quantities come from the transaction log (weighted-average cost method); current prices and market values for the Current Holdings table and the Aug 2026 data point come from the live snapshot. Apr–Jul monthly figures use last-traded prices from the log and are therefore approximate. The 30-year projection is a mathematical illustration of $300/month at a constant 15% annual return; actual markets do not compound smoothly, and 15% p.a. is not guaranteed. This report is for personal tracking only and is not financial advice.
+    Figures are derived from the uploaded Betashares transaction log (46 transactions, 26 Apr 2026 – 14 Aug 2026) combined with a live portfolio snapshot from the Betashares app on 14 Aug 2026. Cost basis and quantities come from the transaction log (weighted-average cost method); current prices and market values for the Current Holdings table and the Aug 2026 data point come from the live snapshot. Apr–Jul monthly figures use last-traded prices from the log and are therefore approximate. The 30-year projection is a mathematical illustration of $300/month at a constant 15% annual return; actual markets do not compound smoothly, and 15% p.a. is not guaranteed. This report is for personal tracking only and is not financial advice.
   </footer>
 
 </div>
 
 <script>
-document.getElementById('genDate').textContent = new Date('2026-08-10T00:00:00').toLocaleDateString('en-AU',{day:'numeric',month:'short',year:'numeric'});
+document.getElementById('genDate').textContent = new Date('2026-08-14T00:00:00').toLocaleDateString('en-AU',{day:'numeric',month:'short',year:'numeric'});
 
 Chart.defaults.font.family = "'Inter', sans-serif";
 Chart.defaults.color = '#6E6555';
@@ -378,8 +378,8 @@ new Chart(document.getElementById('goalChart'), {
 
 // ---- Monthly gain/loss chart ----
 const months = ['Apr 2026','May 2026','Jun 2026','Jul 2026','Aug 2026 (to date)'];
-const netGL = [0.00, -200.89, 100.68, 8.72, 240.60];
-const balances = [600.00, 1599.11, 2599.79, 2608.51, 2849.11];
+const netGL = [0.00, -200.89, 100.68, 8.72, 250.50];
+const balances = [600.00, 1599.11, 2599.79, 2608.51, 2859.01];
 
 new Chart(document.getElementById('monthlyChart'), {
   type:'bar',
@@ -414,11 +414,7 @@ months.forEach((m,i)=>{
 
 // ---- Holdings table ----
 const holdings = [
-  {sym:'LNAS:AU', name:'Global X Ultra Long Nasdaq 100 Complex ETF', qty:99.0959, avg:12.1095, last:12.35, mv:1223.83, unreal:23.83, pct:1.99},
-  {sym:'RCKT:AU', name:'Betashares Space Industry ETF', qty:64.9520, avg:9.3021, last:10.49, mv:681.35, unreal:77.16, pct:12.77},
-  {sym:'SEMI:AU', name:'Global X Semiconductor ETF', qty:9.1537, avg:32.67, last:36.20, mv:331.36, unreal:32.31, pct:10.81},
-  {sym:'URNM:AU', name:'Betashares Global Uranium ETF', qty:30.3600, avg:9.8814, last:10.29, mv:312.40, unreal:12.40, pct:4.13},
-  {sym:'NDQ:AU', name:'Betashares NASDAQ 100 ETF', qty:4.8956, avg:61.28, last:61.31, mv:300.15, unreal:0.15, pct:0.05},
+  {sym:'SNAS:AU', name:'Global X Ultra Short Nasdaq 100 Complex ETF', qty:86.8957, avg:10.3572, last:10.17, mv:883.72, unreal:-16.28, pct:-1.81},
 ];
 const hBody = document.getElementById('holdingsTableBody');
 let totMV=0, totCost=0;
