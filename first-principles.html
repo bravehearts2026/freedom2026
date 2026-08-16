@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>First Principles — Family Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F3EC; --ink:#1B2A2E; --navy:#132B3A; --line:#D8D1C0;
+    --gold:#B78A2E; --green:#3E6E5A; --green-bg:#E7EFE8;
+    --rust:#A6472F; --rust-bg:#F5E7E2; --muted:#6E6555; --card:#FFFDF8;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:900px;margin:0 auto;padding:48px 28px 90px;}
+  .back-link{display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--muted);text-decoration:none;margin-bottom:22px;}
+  .back-link:hover{color:var(--navy);}
+
+  .ledger-strip{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:18px;margin-bottom:6px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);}
+  .ledger-strip span{color:var(--navy);font-weight:600;}
+
+  header.hero{padding:34px 0 40px;border-bottom:1px solid var(--line);margin-bottom:40px;}
+  h1{font-family:'Fraunces',serif;font-weight:600;font-size:42px;line-height:1.08;margin:0 0 14px;letter-spacing:-0.01em;}
+  h1 em{font-style:italic;font-weight:400;color:var(--gold);}
+  .sub{color:var(--muted);font-size:15.5px;max-width:64ch;line-height:1.65;}
+
+  .section{margin:52px 0;}
+  .section-head{display:flex;align-items:baseline;gap:14px;margin-bottom:18px;}
+  .section-num{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gold);font-weight:700;}
+  .section-head h2{font-family:'Fraunces',serif;font-size:23px;font-weight:600;margin:0;}
+  .section-head .desc{margin-left:auto;font-size:12.5px;color:var(--muted);text-align:right;max-width:30ch;}
+  p.lede{color:var(--ink);font-size:14.5px;line-height:1.75;max-width:70ch;margin:0 0 18px;}
+
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .compare-card{background:var(--card);border:1px solid var(--line);padding:20px 22px;}
+  .compare-card.old{border-left:3px solid var(--muted);}
+  .compare-card.new{border-left:3px solid var(--gold);}
+  .compare-card .tag{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);}
+  .compare-card h3{font-family:'Fraunces',serif;font-size:17px;font-weight:600;margin:6px 0 8px;}
+  .compare-card p{font-size:13px;color:var(--ink);line-height:1.6;margin:0;}
+
+  .story-card{background:var(--card);border:1px solid var(--line);padding:26px 28px;}
+  .story-card h3{font-family:'Fraunces',serif;font-size:19px;font-weight:600;margin:0 0 12px;}
+  .story-card p{font-size:14px;line-height:1.75;color:var(--ink);margin:0 0 14px;}
+  .story-card p:last-child{margin-bottom:0;}
+  .story-number{
+    display:inline-flex;align-items:baseline;gap:10px;background:var(--paper);border:1px solid var(--line);
+    padding:14px 18px;margin:6px 0;
+  }
+  .story-number .big{font-family:'JetBrains Mono',monospace;font-size:26px;font-weight:700;color:var(--rust);}
+  .story-number .lbl{font-size:12px;color:var(--muted);}
+
+  .materials-row{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0;}
+  .material-chip{
+    font-family:'JetBrains Mono',monospace;font-size:11.5px;background:var(--paper);border:1px solid var(--line);
+    padding:6px 12px;color:var(--navy);font-weight:600;
+  }
+
+  .steps{counter-reset:step;}
+  .step{
+    display:flex;gap:16px;padding:18px 0;border-bottom:1px solid var(--line);
+  }
+  .step:last-child{border-bottom:none;}
+  .step .num{
+    font-family:'Fraunces',serif;font-size:26px;font-weight:600;color:var(--gold);
+    min-width:36px;
+  }
+  .step h4{font-family:'Fraunces',serif;font-size:16px;font-weight:600;margin:0 0 5px;}
+  .step p{font-size:13.5px;color:var(--muted);line-height:1.6;margin:0;max-width:60ch;}
+
+  .try-card{background:var(--navy);color:var(--paper);padding:28px 30px;}
+  .try-card .tag{font-family:'JetBrains Mono',monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:0.08em;color:var(--gold);}
+  .try-card h3{font-family:'Fraunces',serif;font-size:20px;font-weight:600;margin:8px 0 12px;color:var(--paper);}
+  .try-card p{font-size:14px;line-height:1.7;color:#D7DEE1;margin:0 0 10px;}
+  .try-card .q{
+    font-family:'Fraunces',serif;font-style:italic;font-size:16px;color:var(--paper);
+    border-left:3px solid var(--gold);padding-left:14px;margin:16px 0;
+  }
+
+  footer{margin-top:70px;border-top:2px solid var(--navy);padding-top:18px;font-size:11px;color:var(--muted);line-height:1.7;}
+
+  @media (max-width:700px){
+    .two-col{grid-template-columns:1fr;}
+    h1{font-size:32px;}
+    .section-head{flex-direction:column;align-items:flex-start;}
+    .section-head .desc{margin-left:0;text-align:left;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back-link" href="./index.html">&larr; Back to Family Hub</a>
+
+  <div class="ledger-strip">
+    <div>Mindset <span>&middot; Dad's Corner</span></div>
+    <div>Added <span>16 Aug 2026</span></div>
+  </div>
+
+  <header class="hero">
+    <h1>Reason From the <em>Goal</em>,<br>Not From Tradition</h1>
+    <p class="sub">A way of thinking Elon Musk used to build rockets ten times cheaper than anyone thought possible &mdash; and a habit you can use on almost anything. It's called <strong>first-principles thinking</strong>, and it's simpler than it sounds.</p>
+  </header>
+
+  <!-- SECTION: TWO WAYS TO THINK -->
+  <div class="section">
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <h2>Two Ways to Solve a Problem</h2>
+      <span class="desc">Most people only use one of these</span>
+    </div>
+    <p class="lede">Most of the time, when we solve a problem, we copy what's already been done. That's called <strong>reasoning by analogy</strong> &mdash; and it's usually fine, because most problems have already been solved by someone. But sometimes it quietly limits you to whatever the "normal" answer already is.</p>
+    <div class="two-col">
+      <div class="compare-card old">
+        <span class="tag">The usual way</span>
+        <h3>Reasoning by Analogy</h3>
+        <p>"This is how it's always been done, so this is roughly what it should cost / how long it should take / how hard it should be." You compare to what already exists and adjust a little. Fast, safe, and usually good enough &mdash; but it can't beat what already exists, because it's built from what already exists.</p>
+      </div>
+      <div class="compare-card new">
+        <span class="tag">The Musk way</span>
+        <h3>First-Principles Thinking</h3>
+        <p>Break the problem down to the most basic true facts you're sure of &mdash; ignore how it's normally done &mdash; then build back up from those facts toward your actual goal. Slower to start. Sometimes reveals that the "normal" way was wildly inefficient.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION: THE ROCKET STORY -->
+  <div class="section">
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <h2>The Story: Why SpaceX Exists</h2>
+      <span class="desc">The example Musk tells most often</span>
+    </div>
+    <div class="story-card">
+      <h3>A $65 million quote, and a question nobody else was asking</h3>
+      <p>In the early 2000s, Musk wanted to send something to Mars &mdash; partly just to get the public excited about space again. He went shopping for a rocket. The going price: as high as <strong>$65 million</strong>. He even flew to Russia to see about buying a used intercontinental ballistic missile instead. Still $8&ndash;20 million. Too expensive.</p>
+      <p>Almost everyone in that position would reason by analogy: <em>"Rockets are expensive. That's just what they cost. Find the cheapest one."</em> Musk asked a different question instead:</p>
+      <div class="try-card" style="margin:18px 0;">
+        <p class="q" style="color:var(--paper);margin:0;">"What is a rocket actually made of?"</p>
+      </div>
+      <p>Broken down to its raw materials, a rocket is mostly:</p>
+      <div class="materials-row">
+        <span class="material-chip">Aerospace-grade aluminum</span>
+        <span class="material-chip">Titanium</span>
+        <span class="material-chip">Copper</span>
+        <span class="material-chip">Carbon fiber</span>
+      </div>
+      <p>He looked up what those raw materials actually cost on the commodity market &mdash; the honest, no-markup price of the metal itself.</p>
+      <div class="story-number">
+        <span class="big">~2%</span>
+        <span class="lbl">of a typical rocket's selling price was the actual cost of what it's made of</span>
+      </div>
+      <p>That gap &mdash; somewhere between $60 million and the true material cost &mdash; wasn't really "the cost of building a rocket." It was mostly the cost of an industry that outsourced to subcontractors, who outsourced to their own subcontractors, with everyone adding a markup and nobody responsible for the whole thing. Musk's conclusion wasn't "rockets are just expensive." It was: <strong>the manufacturing process must be the broken part.</strong> So instead of buying a rocket, he started a company to build one, from the raw materials up. That company was SpaceX, and inside a few years it had cut the cost of a launch by roughly <strong>10x</strong> &mdash; which is the entire reason SpaceX can now launch almost every single day, and the entire reason that other page on this site has a chart with 167 launches in one year.</p>
+    </div>
+  </div>
+
+  <!-- SECTION: SECOND EXAMPLE -->
+  <div class="section">
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <h2>He Did It Again With Batteries</h2>
+      <span class="desc">Same method, different industry &mdash; Tesla</span>
+    </div>
+    <div class="story-card">
+      <p>Years later at Tesla, people told Musk the same kind of thing: <em>"Battery packs are expensive, and that's just the way they'll always be. Historically it's cost about $600 per kilowatt-hour."</em> Same trap &mdash; reasoning by analogy, treating the current price as a law of nature.</p>
+      <p>Same question, applied again: what is a battery actually made of? Cobalt, nickel, aluminum, carbon, some polymers, a steel can. Priced on the London Metal Exchange, those raw materials came to roughly <strong>$80 per kilowatt-hour</strong> &mdash; not $600.</p>
+      <p>The $520 gap wasn't a law of physics. It was a manufacturing and supply-chain problem &mdash; which meant it was solvable. Tesla built its own battery production instead of accepting the "historical" price, and battery costs have fallen dramatically industry-wide since.</p>
+    </div>
+  </div>
+
+  <!-- SECTION: THE METHOD -->
+  <div class="section">
+    <div class="section-head">
+      <span class="section-num">04</span>
+      <h2>How to Actually Do This</h2>
+      <span class="desc">Four steps, every time</span>
+    </div>
+    <div class="story-card steps">
+      <div class="step">
+        <span class="num">1</span>
+        <div><h4>Name the real goal &mdash; not the usual method</h4><p>Musk's goal was never "buy a rocket." It was "get to Mars for less than $65 million." Separating the goal from the conventional way of reaching it is the whole trick.</p></div>
+      </div>
+      <div class="step">
+        <span class="num">2</span>
+        <div><h4>Ask "why does it cost / take this much?" until you hit bedrock</h4><p>Keep asking why until you reach something you're actually certain is true &mdash; a physical fact, a real constraint &mdash; not just "because that's how it's done" or "because that's what it's always cost."</p></div>
+      </div>
+      <div class="step">
+        <span class="num">3</span>
+        <div><h4>Ignore the "normal" price or method completely</h4><p>Once you know the true floor &mdash; the raw materials, the real minimum &mdash; forget what convention says it should cost. The gap between the floor and the "normal" price is where the opportunity is.</p></div>
+      </div>
+      <div class="step">
+        <span class="num">4</span>
+        <div><h4>Build back up toward the goal, not toward the tradition</h4><p>Design the solution from those fundamentals, aimed at what you actually need &mdash; even if it means doing the whole thing differently than everyone else does.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION: TRY IT -->
+  <div class="section">
+    <div class="section-head">
+      <span class="section-num">05</span>
+      <h2>Try It On Something Small</h2>
+      <span class="desc">This works on ordinary problems too</span>
+    </div>
+    <p class="lede">You don't need a rocket company to use this. It works on homework, on chores, on a sport you're stuck on, on saving money &mdash; anything where you've been told "that's just how it is."</p>
+    <div class="try-card">
+      <span class="tag">Next time something feels stuck</span>
+      <h3>Ask yourself these, in order</h3>
+      <p class="q">What am I actually trying to achieve here &mdash; not the method I've been using, the actual goal?</p>
+      <p class="q">What do I know for certain is true, with no assumptions?</p>
+      <p class="q">If I forgot how everyone else does this, what would I try?</p>
+      <p style="margin-top:14px;">That's it. Most of the time you'll still end up doing things the normal way &mdash; and that's fine, the normal way is often normal because it works. But every so often, this is how you find the 2%.</p>
+    </div>
+  </div>
+
+  <footer>
+    Quotes and figures (the $65 million rocket quote, the ~2% raw-material figure, the ~10x cost reduction, the $600/$80 per kWh battery figures) are drawn from Elon Musk's own public retellings of these stories, including his 2013 TED Talk and later interviews, as widely reported by multiple sources. Numbers are approximate as recounted by Musk over the years and may vary slightly between tellings. This page is a family project distilling a well-known idea for the kids &mdash; not a business or investing recommendation.
+  </footer>
+
+</div>
+</body>
+</html>
