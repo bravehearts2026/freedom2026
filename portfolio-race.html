@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio Race — Family Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F3EC; --ink:#1B2A2E; --navy:#132B3A; --line:#D8D1C0;
+    --gold:#B78A2E; --green:#3E6E5A; --muted:#6E6555; --card:#FFFDF8;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:900px;margin:0 auto;padding:48px 28px 90px;}
+  .back-link{display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--muted);text-decoration:none;margin-bottom:22px;}
+  .back-link:hover{color:var(--navy);}
+
+  .ledger-strip{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:18px;margin-bottom:6px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);}
+  .ledger-strip span{color:var(--navy);font-weight:600;}
+
+  header.hero{padding:34px 0 36px;border-bottom:1px solid var(--line);margin-bottom:36px;}
+  h1{font-family:'Fraunces',serif;font-weight:600;font-size:40px;line-height:1.08;margin:0 0 12px;letter-spacing:-0.01em;}
+  h1 em{font-style:italic;font-weight:400;color:var(--gold);}
+  .sub{color:var(--muted);font-size:15px;max-width:64ch;line-height:1.6;}
+
+  /* Tabs */
+  .tabs{display:flex;gap:8px;margin-bottom:24px;}
+  .tab-btn{
+    font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;letter-spacing:0.03em;
+    padding:9px 20px;border:1px solid var(--line);background:var(--card);color:var(--muted);cursor:pointer;
+  }
+  .tab-btn.active{background:var(--navy);color:var(--paper);border-color:var(--navy);}
+
+  .race-card{background:var(--card);border:1px solid var(--line);padding:26px 28px 22px;}
+  .race-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:8px;}
+  .race-header h3{font-family:'Fraunces',serif;font-size:17px;font-weight:600;margin:0;}
+  .month-display{font-family:'JetBrains Mono',monospace;font-size:26px;font-weight:700;color:var(--gold);}
+
+  .race-area{position:relative;height:280px;margin-top:20px;overflow:hidden;transition:height 900ms cubic-bezier(.4,0,.2,1);}
+  .bar-row{
+    position:absolute;left:0;right:0;height:44px;
+    transition: top 900ms cubic-bezier(.4,0,.2,1), opacity 700ms ease;
+  }
+  .bar-track{position:relative;height:100%;}
+  .bar-fill{
+    position:absolute;left:0;top:6px;height:32px;border-radius:0 3px 3px 0;
+    transition: width 900ms cubic-bezier(.4,0,.2,1), background-color 900ms;
+    display:flex;align-items:center;
+  }
+  .bar-label{
+    position:absolute;left:8px;top:50%;transform:translateY(-50%);
+    font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:var(--paper);
+    white-space:nowrap;
+  }
+  .bar-value{
+    position:absolute;top:50%;transform:translateY(-50%);
+    font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;color:var(--ink);
+    white-space:nowrap; transition: left 900ms cubic-bezier(.4,0,.2,1);
+  }
+
+  /* Controls */
+  .controls{display:flex;align-items:center;gap:14px;margin-top:26px;}
+  .play-btn{
+    font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;
+    background:var(--navy);color:var(--paper);border:none;padding:10px 18px;cursor:pointer;
+    display:flex;align-items:center;gap:8px;
+  }
+  .play-btn:hover{background:#1c3a4d;}
+  .rail{flex:1;display:flex;align-items:center;gap:0;position:relative;}
+  .rail-line{position:absolute;left:10px;right:10px;top:50%;height:2px;background:var(--line);}
+  .rail-dot{
+    position:relative;width:20px;height:20px;border-radius:50%;background:var(--card);border:2px solid var(--line);
+    cursor:pointer;flex:1;display:flex;align-items:center;justify-content:center;
+  }
+  .rail-dot .inner{width:8px;height:8px;border-radius:50%;background:transparent;}
+  .rail-dot.active{border-color:var(--gold);}
+  .rail-dot.active .inner{background:var(--gold);}
+  .rail-dot.passed{border-color:var(--navy);}
+  .rail-dot.passed .inner{background:var(--navy);}
+  .rail-labels{display:flex;justify-content:space-between;margin-top:8px;padding:0 2px;}
+  .rail-labels span{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(--muted);}
+
+  .legend{display:flex;flex-wrap:wrap;gap:10px 16px;margin-top:22px;padding-top:18px;border-top:1px solid var(--line);}
+  .legend-item{display:flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);}
+  .legend-dot{width:10px;height:10px;border-radius:2px;flex-shrink:0;}
+
+  .section{margin:52px 0 0;}
+  p.lede{color:var(--ink);font-size:14px;line-height:1.7;max-width:70ch;margin:0 0 18px;}
+
+  footer{margin-top:56px;border-top:2px solid var(--navy);padding-top:18px;font-size:11px;color:var(--muted);line-height:1.7;}
+
+  @media (max-width:640px){
+    h1{font-size:30px;}
+    .race-area{height:320px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back-link" href="./index.html">&larr; Back to Family Hub</a>
+
+  <div class="ledger-strip">
+    <div>Portfolio Race <span>&middot; Investing</span></div>
+    <div>Updated <span>21 Aug 2026</span></div>
+  </div>
+
+  <header class="hero">
+    <h1>Watch the <em>Holdings</em><br>Change Places</h1>
+    <p class="sub">Same $300/month plan, completely different portfolio almost every month. Press play to watch what each account actually held, April through August &mdash; full exits and new entries included, not just re-ranking.</p>
+  </header>
+
+  <div class="tabs">
+    <button class="tab-btn active" data-acct="austin">Austin</button>
+    <button class="tab-btn" data-acct="elissa">Elissa</button>
+  </div>
+
+  <div class="race-card">
+    <div class="race-header">
+      <h3 id="raceTitle">Austin's holdings by value</h3>
+      <div class="month-display" id="monthDisplay">Apr 2026</div>
+    </div>
+    <div class="race-area" id="raceArea"></div>
+
+    <div class="controls">
+      <button class="play-btn" id="playBtn">
+        <span id="playIcon">&#9654;</span> <span id="playLabel">Play</span>
+      </button>
+      <div style="flex:1;">
+        <div class="rail" id="rail"></div>
+        <div class="rail-labels" id="railLabels"></div>
+      </div>
+    </div>
+
+    <div class="legend" id="legend"></div>
+  </div>
+
+  <div class="section">
+    <p class="lede">What the swings were: a single fund (SNAS, an inverse Nasdaq ETF) for the first three months &mdash; then a complete pivot in July into five long-only ETFs (LNAS, RCKT, SEMI, URNM, NDQ) &mdash; then another full turnover in August back into SNAS, plus new positions in SEMI, GGOV, and CBA (the first individual stock either account has held). Three genuinely different portfolios in four months.</p>
+  </div>
+
+  <footer>
+    Monthly values are portfolio holdings marked at each month-end using the last known traded price from the Betashares transaction log (except the current month, which uses a live snapshot). Positions under $5 are excluded as rounding dust. This reflects the same underlying data as each account's investment report elsewhere on this site.
+  </footer>
+
+</div>
+
+<script>
+const DATA = {"austin": [{"label": "Apr 2026", "values": {"SNAS:AU": 300.0}}, {"label": "May 2026", "values": {"SNAS:AU": 1599.11}}, {"label": "Jun 2026", "values": {"SNAS:AU": 1099.79}}, {"label": "Jul 2026", "values": {"LNAS:AU": 1113.84, "SEMI:AU": 299.05, "NDQ:AU": 300.0, "URNM:AU": 299.96, "RCKT:AU": 595.61}}, {"label": "Aug 2026", "values": {"SNAS:AU": 936.74, "GGOV:AU": 299.28, "SEMI:AU": 300.85, "CBA:AU": 300.42}}], "elissa": [{"label": "Apr 2026", "values": {"SNAS:AU": 890.29}}, {"label": "May 2026", "values": {"SNAS:AU": 1851.01}}, {"label": "Jun 2026", "values": {"SNAS:AU": 1143.14}}, {"label": "Jul 2026", "values": {"LNAS:AU": 1410.22, "SEMI:AU": 299.3, "NDQ:AU": 300.0, "URNM:AU": 300.0, "RCKT:AU": 620.65}}, {"label": "Aug 2026", "values": {"SNAS:AU": 936.42, "GGOV:AU": 299.28, "SEMI:AU": 301.03, "CBA:AU": 300.25}}]};
+
+const COLORS = {
+  'SNAS:AU': '#A6472F',
+  'LNAS:AU': '#132B3A',
+  'RCKT:AU': '#B78A2E',
+  'SEMI:AU': '#3E6E5A',
+  'URNM:AU': '#6E5A9E',
+  'NDQ:AU':  '#2E7D9C',
+  'GGOV:AU': '#7A6C5D',
+  'CBA:AU':  '#D9A404'
+};
+const NAMES = {
+  'SNAS:AU': 'SNAS — Ultra Short Nasdaq 100',
+  'LNAS:AU': 'LNAS — Ultra Long Nasdaq 100',
+  'RCKT:AU': 'RCKT — Space Industry',
+  'SEMI:AU': 'SEMI — Semiconductor',
+  'URNM:AU': 'URNM — Global Uranium',
+  'NDQ:AU':  'NDQ — Nasdaq 100',
+  'GGOV:AU': 'GGOV — US Treasury Bond 20+yr',
+  'CBA:AU':  'CBA — Commonwealth Bank (share)'
+};
+
+const ROW_H = 46;
+const BAR_MAX_W_PCT = 0.82;
+const TRANSITION_MS = 900;
+const HOLD_MS = 1400;
+
+let currentAcct = 'austin';
+let currentFrame = 0;
+let playing = false;
+let playTimer = null;
+
+function allSymbols(frames){
+  const s = new Set();
+  frames.forEach(f => Object.keys(f.values).forEach(k => s.add(k)));
+  return Array.from(s);
+}
+
+function render(){
+  const frames = DATA[currentAcct];
+  const frame = frames[currentFrame];
+  document.getElementById('raceTitle').textContent = (currentAcct === 'austin' ? "Austin's" : "Elissa's") + " holdings by value";
+  document.getElementById('monthDisplay').textContent = frame.label;
+
+  const symbols = allSymbols(frames);
+  const maxVal = Math.max(...frames.map(f => Math.max(0, ...Object.values(f.values))));
+  const ranked = symbols
+    .map(s => ({ sym: s, val: frame.values[s] || 0 }))
+    .filter(x => x.val > 0)
+    .sort((a,b) => b.val - a.val);
+
+  const area = document.getElementById('raceArea');
+  area.style.height = (ranked.length * ROW_H + 10) + 'px';
+
+  ranked.forEach((item, i) => {
+    let row = document.getElementById('row-' + item.sym.replace(':','-'));
+    if(!row){
+      row = document.createElement('div');
+      row.className = 'bar-row';
+      row.id = 'row-' + item.sym.replace(':','-');
+      row.innerHTML = `<div class="bar-track">
+        <div class="bar-fill"><span class="bar-label"></span></div>
+        <span class="bar-value"></span>
+      </div>`;
+      area.appendChild(row);
+    }
+    row.style.top = (i * ROW_H) + 'px';
+    row.style.opacity = '1';
+    const fill = row.querySelector('.bar-fill');
+    const label = row.querySelector('.bar-label');
+    const valueEl = row.querySelector('.bar-value');
+    const widthPct = (item.val / maxVal) * BAR_MAX_W_PCT * 100;
+    fill.style.width = widthPct + '%';
+    fill.style.background = COLORS[item.sym] || '#999';
+    label.textContent = item.sym.replace(':AU','');
+    valueEl.textContent = '$' + item.val.toLocaleString('en-AU', {maximumFractionDigits:0});
+    valueEl.style.left = 'calc(' + widthPct + '% + 10px)';
+  });
+
+  // remove rows no longer present this frame
+  Array.from(area.children).forEach(row => {
+    const sym = row.id.replace('row-','').replace('-',':');
+    if(!ranked.find(r => r.sym === sym)){
+      row.style.top = (ranked.length * ROW_H + 20) + 'px';
+      row.style.opacity = '0';
+    }
+  });
+
+  renderRail(frames);
+  renderLegend(symbols);
+}
+
+function renderRail(frames){
+  const rail = document.getElementById('rail');
+  const railLabels = document.getElementById('railLabels');
+  rail.innerHTML = '<div class="rail-line"></div>';
+  railLabels.innerHTML = '';
+  frames.forEach((f, i) => {
+    const dot = document.createElement('div');
+    dot.className = 'rail-dot' + (i === currentFrame ? ' active' : (i < currentFrame ? ' passed' : ''));
+    dot.innerHTML = '<span class="inner"></span>';
+    dot.onclick = () => { stopPlay(); currentFrame = i; render(); };
+    rail.appendChild(dot);
+    const lbl = document.createElement('span');
+    lbl.textContent = f.label.replace(' 2026','');
+    railLabels.appendChild(lbl);
+  });
+}
+
+function renderLegend(symbols){
+  const legend = document.getElementById('legend');
+  legend.innerHTML = '';
+  symbols.forEach(s => {
+    const item = document.createElement('div');
+    item.className = 'legend-item';
+    item.innerHTML = `<span class="legend-dot" style="background:${COLORS[s]||'#999'}"></span>${NAMES[s]||s}`;
+    legend.appendChild(item);
+  });
+}
+
+function stepFrame(){
+  const frames = DATA[currentAcct];
+  currentFrame++;
+  if(currentFrame >= frames.length){
+    currentFrame = frames.length - 1;
+    stopPlay();
+    return;
+  }
+  render();
+  playTimer = setTimeout(stepFrame, TRANSITION_MS + HOLD_MS);
+}
+
+function startPlay(){
+  if(currentFrame >= DATA[currentAcct].length - 1) currentFrame = 0;
+  playing = true;
+  document.getElementById('playIcon').innerHTML = '&#10074;&#10074;';
+  document.getElementById('playLabel').textContent = 'Pause';
+  render();
+  playTimer = setTimeout(stepFrame, TRANSITION_MS + HOLD_MS);
+}
+function stopPlay(){
+  playing = false;
+  document.getElementById('playIcon').innerHTML = '&#9654;';
+  document.getElementById('playLabel').textContent = 'Play';
+  if(playTimer) clearTimeout(playTimer);
+}
+
+document.getElementById('playBtn').onclick = () => {
+  if(playing) stopPlay(); else startPlay();
+};
+
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.onclick = () => {
+    stopPlay();
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentAcct = btn.dataset.acct;
+    currentFrame = 0;
+    document.getElementById('raceArea').innerHTML = '';
+    render();
+  };
+});
+
+render();
+</script>
+</body>
+</html>
