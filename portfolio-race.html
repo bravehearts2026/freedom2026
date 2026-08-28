@@ -104,7 +104,7 @@
 
   <div class="ledger-strip">
     <div>Portfolio Race <span>&middot; Investing</span></div>
-    <div>Updated <span>21 Aug 2026</span></div>
+    <div>Updated <span>28 Aug 2026</span></div>
   </div>
 
   <header class="hero">
@@ -138,7 +138,7 @@
   </div>
 
   <div class="section">
-    <p class="lede">What the swings were: a single fund (SNAS, an inverse Nasdaq ETF) for the first three months &mdash; then a complete pivot in July into five long-only ETFs (LNAS, RCKT, SEMI, URNM, NDQ) &mdash; then another full turnover in August back into SNAS, plus new positions in SEMI, GGOV, and CBA (the first individual stock either account has held). Three genuinely different portfolios in four months.</p>
+    <p class="lede">What the swings were: a single fund (SNAS, an inverse Nasdaq ETF) for the first three months &mdash; then a complete pivot in July into five long-only ETFs (LNAS, RCKT, SEMI, URNM, NDQ) &mdash; then a turnover in mid-August back into SNAS, plus new positions in SEMI, GGOV, and CBA (the first individual stock either account had held) &mdash; and by late August, cash fully deployed across six or seven holdings including a second individual stock, WES. Four distinct portfolios in four months.</p>
   </div>
 
   <footer>
@@ -148,7 +148,7 @@
 </div>
 
 <script>
-const DATA = {"austin": [{"label": "Apr 2026", "values": {"SNAS:AU": 300.0}}, {"label": "May 2026", "values": {"SNAS:AU": 1599.11}}, {"label": "Jun 2026", "values": {"SNAS:AU": 1099.79}}, {"label": "Jul 2026", "values": {"LNAS:AU": 1113.84, "SEMI:AU": 299.05, "NDQ:AU": 300.0, "URNM:AU": 299.96, "RCKT:AU": 595.61}}, {"label": "Aug 2026", "values": {"SNAS:AU": 936.74, "GGOV:AU": 299.28, "SEMI:AU": 300.85, "CBA:AU": 300.42}}], "elissa": [{"label": "Apr 2026", "values": {"SNAS:AU": 890.29}}, {"label": "May 2026", "values": {"SNAS:AU": 1851.01}}, {"label": "Jun 2026", "values": {"SNAS:AU": 1143.14}}, {"label": "Jul 2026", "values": {"LNAS:AU": 1410.22, "SEMI:AU": 299.3, "NDQ:AU": 300.0, "URNM:AU": 300.0, "RCKT:AU": 620.65}}, {"label": "Aug 2026", "values": {"SNAS:AU": 936.42, "GGOV:AU": 299.28, "SEMI:AU": 301.03, "CBA:AU": 300.25}}]};
+const DATA = {"austin": [{"label": "Apr 2026", "values": {"SNAS:AU": 300.0}}, {"label": "May 2026", "values": {"SNAS:AU": 1599.11}}, {"label": "Jun 2026", "values": {"SNAS:AU": 1099.79}}, {"label": "Jul 2026", "values": {"LNAS:AU": 1113.84, "SEMI:AU": 299.05, "NDQ:AU": 300.0, "URNM:AU": 299.96, "RCKT:AU": 595.61}}, {"label": "Aug 2026", "values": {"SNAS:AU": 918.48, "CBA:AU": 602.58, "WES:AU": 485.49, "HACK:AU": 313.95, "RCKT:AU": 298.13, "SEMI:AU": 297.54}}], "elissa": [{"label": "Apr 2026", "values": {"SNAS:AU": 890.29}}, {"label": "May 2026", "values": {"SNAS:AU": 1851.01}}, {"label": "Jun 2026", "values": {"SNAS:AU": 1143.14}}, {"label": "Jul 2026", "values": {"LNAS:AU": 1410.22, "SEMI:AU": 299.3, "NDQ:AU": 300.0, "URNM:AU": 300.0, "RCKT:AU": 620.65}}, {"label": "Aug 2026", "values": {"SNAS:AU": 918.17, "CBA:AU": 601.88, "WES:AU": 535.12, "HACK:AU": 313.95, "GGOV:AU": 302.64, "RCKT:AU": 300.02, "SEMI:AU": 297.71}}]};
 
 const COLORS = {
   'SNAS:AU': '#A6472F',
@@ -158,7 +158,9 @@ const COLORS = {
   'URNM:AU': '#6E5A9E',
   'NDQ:AU':  '#2E7D9C',
   'GGOV:AU': '#7A6C5D',
-  'CBA:AU':  '#D9A404'
+  'CBA:AU':  '#E8B923',
+  'WES:AU':  '#4C7B2A',
+  'HACK:AU': '#C4534A'
 };
 const NAMES = {
   'SNAS:AU': 'SNAS — Ultra Short Nasdaq 100',
@@ -168,7 +170,9 @@ const NAMES = {
   'URNM:AU': 'URNM — Global Uranium',
   'NDQ:AU':  'NDQ — Nasdaq 100',
   'GGOV:AU': 'GGOV — US Treasury Bond 20+yr',
-  'CBA:AU':  'CBA — Commonwealth Bank (share)'
+  'CBA:AU':  'CBA — Commonwealth Bank (share)',
+  'WES:AU':  'WES — Wesfarmers (share)',
+  'HACK:AU': 'HACK — Global Cybersecurity'
 };
 
 const ROW_H = 46;
