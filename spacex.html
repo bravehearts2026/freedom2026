@@ -122,7 +122,7 @@
 
   <div class="ledger-strip">
     <div>Space Log <span>&middot; Dad's Corner</span></div>
-    <div>Updated <span>1 Sep 2026</span></div>
+    <div>Updated <span>1 Oct 2026</span></div>
   </div>
 
   <header class="hero">
@@ -130,8 +130,8 @@
     <p class="sub">From a rocket that blew up over a Pacific atoll in 2006, to catching a 23-story booster out of the sky with metal chopsticks. This is the whole story &mdash; the failures included, because the failures are most of the story.</p>
     <div class="stat-row">
       <div class="stat"><div class="label">First Launch</div><div class="num">Mar 2006</div><div class="foot">Falcon 1, Flight 1</div></div>
-      <div class="stat"><div class="label">Falcon Launches</div><div class="num">~700</div><div class="foot">Falcon 1 + 9 + Heavy, through 1 Sep 2026</div></div>
-      <div class="stat"><div class="label">Starship Flights</div><div class="num">13</div><div class="foot">since Apr 2023, still testing</div></div>
+      <div class="stat"><div class="label">Falcon Launches</div><div class="num">~715</div><div class="foot">Falcon 1 + 9 + Heavy, through 1 Oct 2026</div></div>
+      <div class="stat"><div class="label">Starship Flights</div><div class="num">14</div><div class="foot">since Apr 2023 &mdash; first orbital flight, 28 Sep 2026</div></div>
       <div class="stat"><div class="label">Falcon Years With Zero Failures</div><div class="num">6</div><div class="foot">2017&ndash;2022, back to back</div></div>
     </div>
   </header>
@@ -270,9 +270,10 @@
           <tr><td>IFT-11</td><td>13 Oct 2025</td><td><span class="badge success">Success</span></td><td class="mission-note">Another clean flight, same successful profile as IFT-10.</td></tr>
           <tr><td>IFT-12</td><td>22 May 2026</td><td><span class="badge partial">Partial</span></td><td class="mission-note">First flight of the next-generation "V3" Starship. The booster missed its landing target and the ship had an early engine shutdown.</td></tr>
           <tr><td>IFT-13</td><td>24 Jul 2026</td><td><span class="badge success">Success</span></td><td class="mission-note">Second V3 flight. Called "mostly successful" by mission teams &mdash; the ship made what SpaceX described as its softest-ever splashdown, and the booster landed hard but on target.</td></tr>
+          <tr><td>IFT-14</td><td>28 Sep 2026</td><td><span class="badge success">Success</span></td><td class="mission-note">Starship's first-ever flight to full orbit, and its first delivery of real payloads &mdash; 26 operational Starlink V3 satellites. One of the ship's six engines shut down early on ascent, so the flight team cut the planned ~10-hour, six-orbit mission down to about 3 hours and brought it home early. The ship survived reentry but tipped over and broke apart at splashdown; the booster landed in the Gulf as planned.</td></tr>
         </tbody>
       </table>
-      <p class="mission-note" style="margin-top:14px;">Scorecard so far: <strong>6 full successes, 3 failures, 4 partial successes</strong> across 13 flights. This is completely normal for a brand-new rocket &mdash; Falcon 9 itself took years to become the most reliable rocket flying.</p>
+      <p class="mission-note" style="margin-top:14px;">Scorecard so far: <strong>7 full successes, 3 failures, 4 partial successes</strong> across 14 flights. This is completely normal for a brand-new rocket &mdash; Falcon 9 itself took years to become the most reliable rocket flying.</p>
     </div>
   </div>
 
@@ -329,11 +330,16 @@
         <h4>100 Falcon 9 launches in one year</h4>
         <p>SpaceX flies its 100th Falcon 9 mission of 2026 &mdash; the second year running it's crossed 100 before September. The company is on pace for roughly 160 launches by the end of the year.</p>
       </div>
+      <div class="tl-item">
+        <div class="tl-date">28 SEP 2026</div>
+        <h4>Starship reaches orbit</h4>
+        <p>On its 14th flight, Starship finally makes it to full orbit for the first time &mdash; and immediately puts that to work, deploying 26 operational Starlink satellites. It's the moment Starship stops being purely a test program and starts being an operational rocket.</p>
+      </div>
     </div>
   </div>
 
   <footer>
-    Figures compiled from public sources (Wikipedia's Falcon 1, Falcon 9/Falcon Heavy and Starship flight-test pages, SpaceX launch-statistics trackers, and spaceflight news reporting) as of 1 Sep 2026. Early-era launches (Falcon 1, and every Starship test) are listed individually since there are few enough to list in full; the high-volume Falcon 9/Falcon Heavy era (600+ launches) is summarized with every mission failure named. Yearly totals for the in-progress 2026 year are approximate and will keep being refreshed. This page is a family project, not an official SpaceX resource.
+    Figures compiled from public sources (Wikipedia's Falcon 1, Falcon 9/Falcon Heavy and Starship flight-test pages, SpaceX launch-statistics trackers, and spaceflight news reporting) as of 1 Oct 2026. Early-era launches (Falcon 1, and every Starship test) are listed individually since there are few enough to list in full; the high-volume Falcon 9/Falcon Heavy era (600+ launches) is summarized with every mission failure named. Yearly totals for the in-progress 2026 year are approximate and will keep being refreshed. This page is a family project, not an official SpaceX resource.
   </footer>
 
 </div>
@@ -360,7 +366,7 @@ Chart.defaults.font.family = "'Inter', sans-serif";
 Chart.defaults.color = '#6E6555';
 
 const falconYears = ['2006','2007','2008','2009','2010','2011','2012','2013','2014','2015','2016','2017','2018','2019','2020','2021','2022','2023','2024','2025','2026*'];
-const falconTotals =  [1,1,2,1,2,0,2,3,6,7,9,18,21,13,27,33,61,96,129,162,106];
+const falconTotals =  [1,1,2,1,2,0,2,3,6,7,9,18,21,13,27,33,61,96,129,162,122];
 const falconFail =    [1,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,1,0,0];
 const falconSuccess = falconTotals.map((t,i) => t - falconFail[i]);
 
@@ -387,7 +393,7 @@ new Chart(document.getElementById('falconChart'), {
 });
 
 const starshipYears = ['2023','2024','2025','2026*'];
-const starshipSuccess = [0,3,2,1];
+const starshipSuccess = [0,3,2,2];
 const starshipPartial = [1,1,1,1];
 const starshipFailure = [1,0,2,0];
 
